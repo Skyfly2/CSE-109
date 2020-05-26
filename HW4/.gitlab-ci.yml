@@ -1,0 +1,9 @@
+image: "gcc:latest"
+
+test:gcc:
+  script:
+  - mkdir /root/bin
+  - PATH=$PATH:/root/bin
+  - gcc --version
+  - make test
+  - ./test
