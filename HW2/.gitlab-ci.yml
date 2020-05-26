@@ -1,0 +1,15 @@
+image: "gcc:latest"
+
+test:gcc:
+  script:
+  - mkdir /root/bin
+  - PATH=$PATH:/root/bin
+  - gcc --version
+  - make
+  - make install
+  - test1=$(my_which gcc)
+  - test2=$(my_which make)
+  - test3=$(my_which my_which)
+  - \[ $test1 == "/usr/local/bin/gcc" \];echo $?
+  - \[ $test2 == "/usr/bin/make" \];echo $?
+  - \[ $test3 == "/root/bin/my_which" \];echo $?
